@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SchedulerComparator-impl" basedir="..">
+    <property file="nbproject/project.properties"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" includeantruntime="false"
+               source="${javac.source}" target="${javac.target}" encoding="${source.encoding}"/>
+    </target>
+
+    <target name="compile-tests" depends="compile">
+        <mkdir dir="${build.test.classes.dir}"/>
+        <javac srcdir="${test.src.dir}" destdir="${build.test.classes.dir}" includeantruntime="false"
+               source="${javac.source}" target="${javac.target}" encoding="${source.encoding}">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.jar}" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="${main.class}" fork="true">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run-test-runner" depends="compile-tests">
+        <java classname="TestRunner" fork="true">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+                <pathelement path="${build.test.classes.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="default" depends="run"/>
+</project>

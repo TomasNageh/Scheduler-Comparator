@@ -1,0 +1,7 @@
+build/
+dist/
+nbproject/private/
+**/*.class
+JavaApplication6/build/
+JavaApplication6/dist/
+JavaApplication6/nbproject/private/
