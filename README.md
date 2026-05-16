@@ -164,13 +164,13 @@ SchedulerComparator/
 
 | Metric                   | Scenario A      | Scenario B      | Scenario C      | Scenario D      |
 | ------------------------ | --------------- | --------------- | --------------- | --------------- |
-| Avg Waiting Time winner  | Tie             | **Priority**    | **Priority**    | **Priority**    |
-| Avg Turnaround winner    | Tie             | **Priority**    | **Priority**    | **Priority**    |
-| Avg Response Time winner | **Round Robin** | **Round Robin** | **Round Robin** | **Round Robin** |
+| Avg Waiting Time winner  | **Priority**             | **Priority**    | **Priority**    | **Priority**    |
+| Avg Turnaround winner    | **Priority**             | **Priority**    | **Priority**    | **Priority**    |
+| Avg Response Time winner | **Round Robin** | **Round Robin** | **Round Robin** | **Priority** |
 | Starvation risk observed | No              | Yes (P5)        | Yes (P1)        | Yes (P1)        |
 
 **Round Robin** wins on average response time in every scenario — time-slicing gives every process a first turn quickly.  
-**Preemptive Priority** wins on average waiting and turnaround time whenever priorities differ — urgent jobs finish sooner.
+**Preemptive Priority** wins on average, waiting and turnaround time whenever priorities differ — urgent jobs finish sooner.
 
 ---
 
